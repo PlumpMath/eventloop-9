@@ -1,0 +1,13 @@
+CPPFLAGS=-g -D_REENTRANT
+LDFLAGS=-g 
+SRCS=Main.cpp RunLoop.cpp Socket.cpp
+OBJS=$(subst .cpp,.o,$(SRCS))
+#TEST_SRCS=FileStreamTest.cpp Main.cpp
+#TEST_SRCS=FileStreamTest.cpp ParseHtmlTest.cpp Main.cpp
+#TEST_OBJS=$(subst .cpp,.o,$(TEST_SRCS))
+
+%.o: %.cpp
+	    g++ $(CPPFLAGS) -c $< 
+
+all: $(OBJS) $(TEST_OBJS) 
+	    g++ $(CPPFLAGS) $(LDFLAGS) $(OBJS) $(TEST_OBJS) -omain
